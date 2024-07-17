@@ -1,10 +1,13 @@
 <script lang="ts" setup></script>
 
 <template>
-  <aside class="px-5 py-8 bg-sidebar h-full relative w-full">
+  <aside class="px-5 py-8 bg-gray-200 h-full relative w-full">
     <NuxtLink to="/" class="mb-10 block">
-      <NuxtImg src="/logo.png" alt="Logo" width="100px" class="mx-auto" />
+      <NuxtImg src="/logo.png" alt="Logo" width="120px" class="mx-auto" />
     </NuxtLink>
-    <UiButton>Send</UiButton>
+    <button class="absolute top-2 right-2 hover:text-purple-400 transition">
+      <Icon name="line-md:logout" size="20px" />
+    </button>
+    <LayoutMenu />
   </aside>
 </template>
