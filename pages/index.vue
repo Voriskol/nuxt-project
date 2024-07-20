@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import type { ICard, IColumn } from "~/components/kanban/kanban.types.ts";
+import type { ICard, IColumn } from "~/components/kanban/kanban.types";
+import { useKanbanQuery } from "@/components/kanban/useKanbanQuery";
 useHead({
   title: "Home",
 });
 
 const dragCard = ref<ICard | null>(null);
 const sourceColumn = ref<IColumn | null>(null);
+
+useKanbanQuery();
 </script>
 
 <template>
