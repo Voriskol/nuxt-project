@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { v4 as uuid } from "uuid";
 useHead({
   title: "Login",
 });
@@ -8,7 +9,32 @@ const email = ref("");
 const password = ref("");
 
 const isLoadingStore = useIsLoadingStore();
+const authStore = useAuthStore();
 const router = useRouter();
+
+const login = async () => {
+  isLoadingStore.set(true);
+  await account.createEmailPasswordSession(email.value, password.value);
+  const response = await account.get();
+  if (response) {
+    authStore.set({
+      name: response.name,
+      email: response.email,
+      status: response.status,
+    });
+  }
+  name.value = "";
+  email.value = "";
+  password.value = "";
+
+  await router.push("/");
+  isLoadingStore.set(false);
+};
+
+const register = async () => {
+  await account.create(uuid(), email.value, password.value, name.value);
+  await login();
+};
 </script>
 
 <template>
@@ -35,8 +61,8 @@ const router = useRouter();
           placeholder="Password"
         />
         <div class="flex gap-3 justify-center">
-          <UiButton type="button">Login</UiButton>
-          <UiButton type="button">Register</UiButton>
+          <UiButton @click="login" type="button">Login</UiButton>
+          <UiButton @click="register" type="button">Register</UiButton>
         </div>
       </form>
     </div>

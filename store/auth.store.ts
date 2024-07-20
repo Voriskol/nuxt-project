@@ -43,4 +43,8 @@ export const useIsLoadingStore = defineStore("isLoading", () => {
   function set(data: boolean) {
     isLoading.value = data;
   }
+  return {
+    isLoading,
+    set,
+  };
 });
