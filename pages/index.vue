@@ -30,7 +30,7 @@ const { data, isLoading, refetch } = useKanbanQuery();
             <UiCard
               v-for="card in column.items"
               :key="card.id"
-              class="mb-3 bg-gray-300 hover:border-purple-400"
+              class="mb-5 bg-gray-300 hover:border-purple-400"
               draggable="true"
             >
               <UiCardHeader role="button"> {{ card.name }} </UiCardHeader>

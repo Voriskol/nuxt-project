@@ -6,6 +6,12 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxtjs/tailwindcss",
     "@pinia/nuxt",
+    [
+      "@vee-validate/nuxt",
+      {
+        autoImports: true,
+      },
+    ],
     "shadcn-nuxt",
     [
       "@nuxtjs/google-fonts",
