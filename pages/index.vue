@@ -2,6 +2,9 @@
 import type { ICard, IColumn } from "~/components/kanban/kanban.types";
 import { useKanbanQuery } from "@/components/kanban/useKanbanQuery";
 import dayjs from "dayjs";
+import { useMutation } from "@tanstack/vue-query";
+import { DB_ID, COLLECTION_DEALS } from "~/app.constants";
+import type { EnumStatus } from "~/types/deals.types";
 useHead({
   title: "Home",
 });
@@ -10,6 +13,37 @@ const dragCard = ref<ICard | null>(null);
 const sourceColumn = ref<IColumn | null>(null);
 
 const { data, isLoading, refetch } = useKanbanQuery();
+
+type TypeMutationVariables = {
+  docId: string;
+  status?: EnumStatus;
+};
+
+const { mutate } = useMutation({
+  mutationKey: ["move card"],
+  mutationFn: ({ docId, status }: TypeMutationVariables) =>
+    DB.updateDocument(DB_ID, COLLECTION_DEALS, docId, {
+      status,
+    }),
+  onSuccess: () => {
+    refetch();
+  },
+});
+
+function handleDragStart(card: ICard, column: IColumn) {
+  dragCard.value = card;
+  sourceColumn.value = column;
+}
+
+function handleDragOver(event: DragEvent) {
+  event.preventDefault();
+}
+
+function handleDrop(targetColumn: IColumn) {
+  if (dragCard.value && sourceColumn.value) {
+    mutate({ docId: dragCard.value.id, status: targetColumn.id });
+  }
+}
 </script>
 
 <template>
@@ -22,6 +56,8 @@ const { data, isLoading, refetch } = useKanbanQuery();
           v-for="(column, index) in data"
           :key="column.id"
           class="min-h-screen"
+          @dragover="handleDragOver"
+          @drop="handleDrop(column)"
         >
           <div class="rounded bg-gray-400 py-1 px-5 mb-2 text-center">
             {{ column.name }}
@@ -33,6 +69,7 @@ const { data, isLoading, refetch } = useKanbanQuery();
               :key="card.id"
               class="mb-5 bg-gray-300 hover:border-purple-400"
               draggable="true"
+              @dragstart="handleDragStart(card, column)"
             >
               <UiCardHeader role="button"> {{ card.name }} </UiCardHeader>
               <UiCardDescription>{{ card.price }} $</UiCardDescription>
