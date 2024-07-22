@@ -48,7 +48,7 @@ function handleDrop(targetColumn: IColumn) {
 
 <template>
   <div class="p-10">
-    <h1 class="text-3xl font-bold">My Nuxt project</h1>
+    <h1 class="text-3xl font-bold mb-5">My Nuxt project</h1>
     <div v-if="isLoading">One second please...</div>
     <div v-else>
       <div class="grid grid-cols-5 gap-16">
@@ -59,7 +59,9 @@ function handleDrop(targetColumn: IColumn) {
           @dragover="handleDragOver"
           @drop="handleDrop(column)"
         >
-          <div class="rounded bg-gray-400 py-1 px-5 mb-2 text-center">
+          <div
+            class="rounded bg-gray-400 py-1 px-5 mb-2 text-center text-white italic font-bold"
+          >
             {{ column.name }}
           </div>
           <div>

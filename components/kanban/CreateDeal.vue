@@ -71,7 +71,11 @@ const onSubmit = handleSubmit((values) => {
       />
     </button>
   </div>
-  <form v-if="isOpenForm" @submit="onSubmit" class="flex flex-col gap-3">
+  <form
+    v-if="isOpenForm"
+    @submit="onSubmit"
+    class="flex flex-col gap-2 border-solid border-2 p-3 rounded-lg"
+  >
     <UiInput
       placeholder="Наименование"
       v-model="name"
@@ -101,7 +105,10 @@ const onSubmit = handleSubmit((values) => {
       class="input"
     />
 
-    <button :disabled="isPending">
+    <button
+      :disabled="isPending"
+      class="p-1 bg-purple-500 text-white rounded-lg hover:bg-purple-400 transition"
+    >
       {{ isPending ? "Загрузка..." : "Добавить" }}
     </button>
   </form>
