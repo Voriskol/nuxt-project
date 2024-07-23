@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { ICard, IColumn } from "~/components/kanban/kanban.types";
 import { useKanbanQuery } from "@/components/kanban/useKanbanQuery";
+import { useDealSlideStore } from "@/store/deal-slide.store";
 import dayjs from "dayjs";
 import { useMutation } from "@tanstack/vue-query";
 import { DB_ID, COLLECTION_DEALS } from "~/app.constants";
@@ -13,6 +14,7 @@ const dragCard = ref<ICard | null>(null);
 const sourceColumn = ref<IColumn | null>(null);
 
 const { data, isLoading, refetch } = useKanbanQuery();
+const store = useDealSlideStore();
 
 type TypeMutationVariables = {
   docId: string;
@@ -48,7 +50,7 @@ function handleDrop(targetColumn: IColumn) {
 
 <template>
   <div class="p-10">
-    <h1 class="text-3xl font-bold mb-5">My Nuxt project</h1>
+    <h1 class="text-3xl font-bold mb-5 text-black">My Nuxt project</h1>
     <div v-if="isLoading">One second please...</div>
     <div v-else>
       <div class="grid grid-cols-5 gap-16">
@@ -69,11 +71,13 @@ function handleDrop(targetColumn: IColumn) {
             <UiCard
               v-for="card in column.items"
               :key="card.id"
-              class="mb-5 bg-gray-300 hover:border-purple-400"
+              class="mb-5 bg-gray-400 hover:border-purple-400"
               draggable="true"
               @dragstart="handleDragStart(card, column)"
             >
-              <UiCardHeader role="button"> {{ card.name }} </UiCardHeader>
+              <UiCardHeader role="button" @click="store.set(card)">
+                {{ card.name }}
+              </UiCardHeader>
               <UiCardDescription>{{ card.price }} $</UiCardDescription>
               <UiCardContent>
                 <p>Компания</p>
@@ -86,6 +90,7 @@ function handleDrop(targetColumn: IColumn) {
           </div>
         </div>
       </div>
+      <KanbanSlideover />
     </div>
   </div>
 </template>

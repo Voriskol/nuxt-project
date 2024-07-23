@@ -11,7 +11,7 @@ const props = defineProps<{
   <div
     :class="
       cn(
-        'text-center rounded-lg border border-transparent bg-gray-400 border-gray-400 bg-white text-gray-950 shadow dark:border-gray-800 dark:bg-gray-950 dark:text-gray-50 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800',
+        'text-center rounded-lg border text-gray-900 hover:text-gray-300 border-transparent bg-gray-50 border-purple-400 p-5 hover:bg-gray-500 hover:border-gray-500 transition-all',
         props.class
       )
     "

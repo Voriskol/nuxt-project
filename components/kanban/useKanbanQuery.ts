@@ -14,7 +14,6 @@ export function useKanbanQuery() {
         items: [],
       }));
       const deals = data.documents as unknown as IDeal[];
-      console.log("deals", deals);
 
       for (const deal of deals) {
         const column = newBoard.find((col) => col.id == deal.status);
@@ -29,7 +28,6 @@ export function useKanbanQuery() {
           });
         }
       }
-      console.log("newBoard", newBoard);
       return newBoard;
     },
   });
