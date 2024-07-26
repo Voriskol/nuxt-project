@@ -1,3 +1,3 @@
 <template>
-    <div class="p-10"><h1 class="text-3xl font-bold">Payments</h1></div>
+    <div class="p-10"><h1 class="text-3xl font-bold text-black">Payments</h1></div>
 </template>
