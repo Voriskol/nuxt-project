@@ -13,7 +13,7 @@ onMounted(async () => {
       authStore.set(user);
     }
   } catch (error) {
-    router.push("/");
+    router.push("/login");
   } finally {
     isLoadingStore.set(false);
   }
