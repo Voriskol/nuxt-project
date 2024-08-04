@@ -1,75 +1,25 @@
-# Nuxt 3 Minimal Starter
+# "Kanban board" на Nuxt 3
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Канбан доска, позволяющая добавлять, изменять, комментировать задачи и отслеживать их состояние. 
 
-## Setup
+## Технологии
 
-Make sure to install the dependencies:
+# TypeScript
+для типизации
 
-```bash
-# npm
-npm install
+# Vue Query
+для взаимодействия с сервером
 
-# pnpm
-pnpm install
+# VeeValidate
+для валидации форм
 
-# yarn
-yarn install
+# Pinia
+для управления глобальным состоянием
 
-# bun
-bun install
-```
+# Shadcn/Tailwind CSS
+для работы с дизайном
 
-## Development Server
+# AppWrite
+для реализации бэкенда
 
-Start the development server on `http://localhost:3000`:
 
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

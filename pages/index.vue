@@ -50,14 +50,13 @@ function handleDrop(targetColumn: IColumn) {
 
 <template>
   <div class="p-10 min-h-screen">
-    <h1 class="text-3xl font-bold mb-5 text-black">My Nuxt project</h1>
+    <h1 class="text-3xl font-bold mb-5 text-black">Kanban board</h1>
     <div v-if="isLoading">One second please...</div>
     <div v-else>
       <div class="grid grid-cols-5 gap-16">
         <div
           v-for="(column, index) in data"
           :key="column.id"
-          
           @dragover="handleDragOver"
           @drop="handleDrop(column)"
         >
