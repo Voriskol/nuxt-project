@@ -49,7 +49,7 @@ function handleDrop(targetColumn: IColumn) {
 </script>
 
 <template>
-  <div class="p-10">
+  <div class="p-10 min-h-screen">
     <h1 class="text-3xl font-bold mb-5 text-black">My Nuxt project</h1>
     <div v-if="isLoading">One second please...</div>
     <div v-else>
@@ -57,7 +57,7 @@ function handleDrop(targetColumn: IColumn) {
         <div
           v-for="(column, index) in data"
           :key="column.id"
-          class="min-h-screen"
+          
           @dragover="handleDragOver"
           @drop="handleDrop(column)"
         >

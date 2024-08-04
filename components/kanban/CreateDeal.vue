@@ -54,7 +54,7 @@ const onSubmit = handleSubmit((values) => {
 <template>
   <div class="text-center mb-2">
     <button
-      class="transition-all opacity-20 hover:opacity-100 hover:text-purple-400"
+      class="transition-all opacity-30 hover:opacity-100 hover:text-purple-400 text-black"
       @click="isOpenForm = !isOpenForm"
     >
       <Icon
@@ -74,7 +74,7 @@ const onSubmit = handleSubmit((values) => {
   <form
     v-if="isOpenForm"
     @submit="onSubmit"
-    class="flex flex-col gap-2 border-solid border-2 p-3 rounded-lg"
+    class="flex flex-col gap-2 border-solid border-2 p-3 rounded-lg text-black"
   >
     <UiInput
       placeholder="Наименование"

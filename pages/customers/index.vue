@@ -30,9 +30,12 @@ const customers = data?.value?.documents as unknown as ICustomer[];
       </UiTableHeader>
       <UiTableBody>
         <UiTableRow v-for="customer in customers" :key="customer.$id">
-          <UiTableCell class="font-medium">
-            {{ customer.name }}
-          </UiTableCell>
+          <NuxtLink :href="`/customers/edit/${customer.$id}`">
+            <UiTableCell class="font-medium">
+              {{ customer.name }}
+            </UiTableCell>
+          </NuxtLink>
+
           <UiTableCell>
             {{ customer.email }}
           </UiTableCell>

@@ -40,8 +40,8 @@ const register = async () => {
 <template>
   <div class="flex justify-center items-center h-screen w-full">
     <div class="bg-gray-400 h-1/3 w-1/4 rounded-lg p-5">
-      <h1 class="text-3xl font-bold text-center pb-3">Login</h1>
-      <form>
+      <h1 class="text-3xl font-bold text-center pb-3 text-black">Login</h1>
+      <form class="text-black">
         <UiInput
           v-model="name"
           type="name"
@@ -61,8 +61,12 @@ const register = async () => {
           placeholder="Password"
         />
         <div class="flex gap-3 justify-center">
-          <UiButton @click="login" type="button">Login</UiButton>
-          <UiButton @click="register" type="button">Register</UiButton>
+          <UiButton class="cursor-pointer" @click="login" type="button"
+            >Login</UiButton
+          >
+          <UiButton class="cursor-pointer" @click="register" type="button"
+            >Register</UiButton
+          >
         </div>
       </form>
     </div>
